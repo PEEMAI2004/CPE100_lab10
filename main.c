@@ -20,7 +20,7 @@ typedef struct {
 } GradeData;
 
 int main() {
-  FILE *file;
+  FILE *file, *outputFile;
   char line[100];
   GradeData grades[MAX_GRADES];
   int numGrades = 0;
@@ -30,6 +30,12 @@ int main() {
   file = fopen("grades.csv", "r");
   if (file == NULL) {
     perror("Error opening file");
+    return -1;
+  }
+
+  outputFile = fopen("output.csv", "w");
+  if (outputFile == NULL) {
+    perror("Error creating output file");
     return -1;
   }
 
@@ -68,13 +74,16 @@ int main() {
     grades[i].avgGrade = sum / grades[i].numSubjects;
   }
 
-  printf("Average grades for each term:\n");
+  fprintf(outputFile, "Grade,Average Grade\n");
   for (int i = 0; i < numGrades; i++) {
-    printf("%s: %.2f\n", grades[i].grade, grades[i].avgGrade);
+    fprintf(outputFile, "%s,%.2f\n", grades[i].grade, grades[i].avgGrade);
   }
 
-  printf("Overall average grade: %.2f\n", totalGradeSum / totalNumSubjects);
+  fprintf(outputFile, "Overall Average Grade,%.2f\n",
+          totalGradeSum / totalNumSubjects);
 
   fclose(file);
+  fclose(outputFile);
+
   return 0;
 }
