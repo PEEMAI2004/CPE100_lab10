@@ -1,0 +1,103 @@
+,CODE,Subject NAME,CR,Grade
+Grade 10 Term 1,TH31101,Thai Language 1,1.0,1.5
+,MA31101,Mathematics 1,1.0,4
+,SC30101,Science (Physics),1.0,4
+,SC30102,Science (Chemistry),1.0,4
+,SO31101,Social Studies 1,1.0,4
+,SO31102,History 1,0.5,4
+,HP31101,Health and Physical Education 1,0.5,4
+,AR31101,Arts 1,0.5,4
+,OT31101,Occupations and Thechnology 1,0.5,4
+,EN31101,English 1,1.0,4
+,MA31201,Mathematics Skill 1,2.0,4
+,SC30201,Physics 1,1.5,3.5
+,SC30241,Biology 1,1.5,4
+,OT30105,Design and Technology 1,0.5,4
+,RN31201,English Reading-Writing 1,1.5,4
+,,,,
+,,,,
+Grade 10 Term 2,TH31102,Thai Language 2,1.0,4
+,MA31102,Mathematics 2,1.0,4
+,SC30103,Science (Biology),1.5,3.5
+,SC30104,Earth and Astronomy,1.5,4
+,SO31103,Social Studies 2,1.0,4
+,SO31104,History 2,0.5,4
+,HP31102,Health and Physical Education 2,0.5,4
+,AR31102,Arts 2,0.5,4
+,OT31102,Occupations and Technology 2,0.5,4
+,EN31102,English 2,1.0,4
+,MA31202,Mathematics Skill 2,2.0,4
+,SC30202,Physics 2,1.5,4
+,SC30221,Chemistry 1,1.5,4
+,SC30103,Computational Science 1,0.5,3.5
+,EN31202,English Reading - Writing 2,1.5,4
+,,,,
+,,,,
+Grade 11 Term 1,TH32101,Thai Language 3,1.0,4
+,MA30102,Mathematics 2,1.0,4
+,SC30242,Science 2,1.5,4
+,SC30106,Design and Technology 2,0.5,4
+,SO32101,Social Studies 3,1.0,4
+,SO32102,History 3,0.5,4
+,HP32101,Health and Physical Education 3,0.5,3.5
+,AR32101,Arts 3,0.5,4
+,OT32101,Occupations and Technology 3,0.5,4
+,EN32101,English 3,1.0,4
+,MA30203,Mathematics Skill 3,2.0,4
+,SC30203,Physics 3,1.5,4
+,SC30222,Chemistry 2,1.5,4
+,EN32201,Computational Science 1,1.5,4
+,SO30201,Civic Education 1,0.5,4
+,SC30243,Biology 2,1.5,4
+,,,,
+,,,,
+Grade 11 Term 2,TH32102,Thai Language 4,1.0,4
+,MA30104,Mathematics 6,1.0,4
+,SC30108,Computational Science 2,0.5,4
+,SO32103,Social Studies 4,1.0,4
+,SO32104,History 4,0.5,4
+,HP32102,Health and Physical Education 4,0.5,4
+,AR32102,Arts 4,0.5,4
+,OT32102,Occupations and Technology 4,0.5,4
+,EN32102,English 4,1.0,4
+,MA30204,Mathematics Skill 4,2.0,4
+,SC30204,Physics 4,1.5,3.5
+,SC30223,Chemistry 3,1.5,4
+,EN32202,English Reading-Writing 4,1.5,4
+,SO30203,Civic Education 3,0.5,4
+,SC30243,Biology 3,1.5,4
+,SO30202,Civic Education 2,0.5,4
+,,,,
+,,,,
+Grade 12 Term 1,TH33101,Thai Language 5,1.0,3.5
+,MA30105,Mathematics 5,1.0,4
+,MA30205,Mathematics Skill 5,2.0,4
+,SC30109,Computational Science 3,0.5,4
+,SC30205,Physics 5,1.0,4
+,SC30224,Chemistry 4,1.0,4
+,SC30244,Biology 4,1.0,4
+,SO33101,Social Studies 5,1.0,4
+,SO30203,Civic Education 3,0.5,4
+,HP33101,Health and Physical Education 5,0.5,4
+,AR33101,Arts 5,0.5,4
+,OT33101,Occupations and Technology 5,0.5,3.5
+,EN33101,English 5,1.0,4
+,EN33201,English Reading-Writing 5,1.0,4
+,EN33202,English analyze,1.0,4
+,,,,
+,,,,
+Grade 12 Term 2,TH33102,Thai Language 2,1.0,3
+,MA30106,Mathematics 6,1.0,3
+,MA30206,Mathematics Skill 6,2.0,3
+,SC30206,Physics 6,1.0,4
+,SC30225,Chemistry 5,1.0,4
+,SC30245,Biology 5,1.0,4
+,SC30281,Computer Graffic,0.5,4
+,SO33102,Social Studies 6,1.0,3.5
+,SO30204,Civic Education 4,0.5,4
+,HP33102,Health and Physical Education 6,0.5,4
+,AR33102,Arts 6,0.5,4
+,OT33102,Occupations and Technology 6,0.5,4
+,EN33102,English 6,1.0,4
+,EN33203,English Reading-Writing 6,1.0,4
+,EN33204,General English,1.0,4
