@@ -4,7 +4,6 @@
 
 #define MAX_GRADES 100
 #define MAX_SUBJECTS 100
-#define INPUT_FILE "grades.txt"
 
 typedef struct {
   char code[50];
@@ -27,6 +26,7 @@ typedef struct {
 } SubjectGroup;
 
 int main() {
+  char filename[] = "grades.csv"; // change file name here
   FILE *file, *outputFile;
   char line[100];
   GradeData grades[MAX_GRADES];
@@ -37,7 +37,7 @@ int main() {
   int numSubjectGroups = 0;
   int isFirstLine = 1;
 
-  file = fopen(INPUT_FILE, "r");
+  file = fopen(filename, "r");
   if (file == NULL) {
     perror("Error opening file");
     return -1;
