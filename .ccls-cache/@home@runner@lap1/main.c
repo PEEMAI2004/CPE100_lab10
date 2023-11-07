@@ -19,6 +19,12 @@ typedef struct {
   float avgGrade;
 } GradeData;
 
+typedef struct {
+  char subjectGroup[3];
+  float totalGrade;
+  int count;
+} SubjectGroup;
+
 int main() {
   FILE *file, *outputFile;
   char line[100];
@@ -26,6 +32,8 @@ int main() {
   int numGrades = 0;
   float totalGradeSum = 0;
   int totalNumSubjects = 0;
+  SubjectGroup subjectGroups[MAX_SUBJECTS];
+  int numSubjectGroups = 0;
 
   file = fopen("grades.csv", "r");
   if (file == NULL) {
@@ -63,6 +71,26 @@ int main() {
       grades[numGrades - 1].numSubjects++;
       totalGradeSum += newSubject.grade;
       totalNumSubjects++;
+
+      // Calculate subject group averages
+      char subjectGroup[3];
+      strncpy(subjectGroup, newSubject.code, 2);
+      subjectGroup[2] = '\0';
+      int found = 0;
+      for (int i = 0; i < numSubjectGroups; i++) {
+        if (strcmp(subjectGroup, subjectGroups[i].subjectGroup) == 0) {
+          subjectGroups[i].totalGrade += newSubject.grade;
+          subjectGroups[i].count++;
+          found = 1;
+          break;
+        }
+      }
+      if (!found) {
+        strcpy(subjectGroups[numSubjectGroups].subjectGroup, subjectGroup);
+        subjectGroups[numSubjectGroups].totalGrade = newSubject.grade;
+        subjectGroups[numSubjectGroups].count = 1;
+        numSubjectGroups++;
+      }
     }
   }
 
@@ -81,6 +109,12 @@ int main() {
 
   fprintf(outputFile, "Overall Average Grade,%.2f\n",
           totalGradeSum / totalNumSubjects);
+
+  fprintf(outputFile, "\nSubject Group,Average Grade\n");
+  for (int i = 0; i < numSubjectGroups; i++) {
+    fprintf(outputFile, "%s,%.2f\n", subjectGroups[i].subjectGroup,
+            subjectGroups[i].totalGrade / subjectGroups[i].count);
+  }
 
   fclose(file);
   fclose(outputFile);
