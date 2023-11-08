@@ -125,43 +125,6 @@ void printOverallAvgGrade()
   float overall_avg_grade = overall_total_grade / overall_total_credits;
   printf("Overall Average Grade: %.2f\n", overall_avg_grade);
 }
-void writeOutputToCSV()
-{
-  FILE *file = fopen("output.csv", "w");
-  if (file == NULL)
-  {
-    printf("Failed to create the output file.\n");
-    exit(1);
-  }
-
-  fprintf(file, "Average Grade of Each Term:\n");
-  for (int i = 0; i < num_terms; i++)
-  {
-    float total_grade = 0.0;
-    for (int j = 0; j < terms[i].num_subjects; j++)
-    {
-      total_grade += terms[i].subjects[j].grade * terms[i].subjects[j].credit;
-    }
-    float avg_grade = total_grade / terms[i].total_credits;
-    fprintf(file, "%s,%.2f\n", terms[i].name, avg_grade);
-  }
-
-  fprintf(file, "\nOverall Average Grade:\n");
-  float overall_total_grade = 0.0;
-  float overall_total_credits = 0.0;
-  for (int i = 0; i < num_terms; i++)
-  {
-    for (int j = 0; j < terms[i].num_subjects; j++)
-    {
-      overall_total_grade += terms[i].subjects[j].grade * terms[i].subjects[j].credit;
-      overall_total_credits += terms[i].subjects[j].credit;
-    }
-  }
-  float overall_avg_grade = overall_total_grade / overall_total_credits;
-  fprintf(file, "%.2f\n", overall_avg_grade);
-
-  fclose(file);
-}
 void printAvgGradeByGroup()
 {
   char groups[MAX_SUBJECTS][3] = {0};
@@ -251,6 +214,76 @@ void calculateAvgGradeByGroup()
   }
 
   fclose(file);
+}
+
+void writeOutputToCSV() {
+    // Open the output file for writing
+    FILE *file = fopen("output.csv", "w");
+    if (file == NULL) {
+        printf("Failed to create the output file.\n");
+        exit(1);
+    }
+
+    // Write the average grade of each term to the file
+    fprintf(file, "Average Grade of Each Term:\n");
+    for (int i = 0; i < num_terms; i++) {
+        float total_grade = 0.0;
+        for (int j = 0; j < terms[i].num_subjects; j++) {
+            total_grade += terms[i].subjects[j].grade * terms[i].subjects[j].credit;
+        }
+        float avg_grade = total_grade / terms[i].total_credits;
+        fprintf(file, "%s,%.2f\n", terms[i].name, avg_grade);
+    }
+
+    // Calculate the overall average grade
+    fprintf(file, "\nOverall Average Grade:\n");
+    float overall_total_grade = 0.0;
+    float overall_total_credits = 0.0;
+    for (int i = 0; i < num_terms; i++) {
+        for (int j = 0; j < terms[i].num_subjects; j++) {
+            overall_total_grade += terms[i].subjects[j].grade * terms[i].subjects[j].credit;
+            overall_total_credits += terms[i].subjects[j].credit;
+        }
+    }
+    float overall_avg_grade = overall_total_grade / overall_total_credits;
+    fprintf(file, "%.2f\n", overall_avg_grade);
+
+    // Calculate the average grade by subject groups
+    char groups[MAX_SUBJECTS][3] = {0};
+    float group_total_grade[MAX_SUBJECTS] = {0};
+    float group_total_credits[MAX_SUBJECTS] = {0};
+    int num_groups = 0;
+
+    for (int i = 0; i < num_terms; i++) {
+        for (int j = 0; j < terms[i].num_subjects; j++) {
+            char group[3] = {terms[i].subjects[j].code[0], terms[i].subjects[j].code[1], '\0'};
+            int found = 0;
+            for (int k = 0; k < num_groups; k++) {
+                if (strcmp(groups[k], group) == 0) {
+                    found = 1;
+                    group_total_grade[k] += terms[i].subjects[j].grade * terms[i].subjects[j].credit;
+                    group_total_credits[k] += terms[i].subjects[j].credit;
+                    break;
+                }
+            }
+            if (!found) {
+                strcpy(groups[num_groups], group);
+                group_total_grade[num_groups] = terms[i].subjects[j].grade * terms[i].subjects[j].credit;
+                group_total_credits[num_groups] = terms[i].subjects[j].credit;
+                num_groups++;
+            }
+        }
+    }
+
+    // Write the average grade by subject groups to the file
+    fprintf(file, "\nAverage Grade by Subject Groups:\n");
+    for (int i = 0; i < num_groups; i++) {
+        float avg_grade = group_total_grade[i] / group_total_credits[i];
+        fprintf(file, "%s,%.2f\n", groups[i], avg_grade);
+    }
+
+    // Close the output file
+    fclose(file);
 }
 
 
