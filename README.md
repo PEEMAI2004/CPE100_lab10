@@ -6,7 +6,7 @@ Calculate avgrage grades from all terms
 
 ## Instruction
 ### Rounding
-change flag that use in the function
+change flag that use with the function
 
 ``` C
 writeOutputToCSV("flag");
