@@ -202,7 +202,7 @@ void writeOutputToCSV()
   }
 
   // Calculate the overall average grade
-  fprintf(file, "\nOverall Average Grade:\n");
+  fprintf(file, "\nOverall Average Grade:");
   float overall_total_grade = 0.0;
   float overall_total_credits = 0.0;
   for (int i = 0; i < num_terms; i++)
@@ -214,7 +214,7 @@ void writeOutputToCSV()
     }
   }
   float overall_avg_grade = overall_total_grade / overall_total_credits;
-  fprintf(file, "%.2f\n", overall_avg_grade);
+  fprintf(file, ",%.2f\n", overall_avg_grade);
 
   // Calculate the average grade by subject groups
   char groups[MAX_SUBJECTS][3] = {0};
@@ -258,6 +258,7 @@ void writeOutputToCSV()
 
   // Close the output file
   fclose(file);
+  printf("Done! Write Data to output.csv\n");
 }
 
 // Main function
@@ -266,10 +267,15 @@ int main()
   const char *filename = "grades.csv";
   readGradesFromFile(filename);
 
-  printAvgGradeOfEachTerm();
-  printOverallAvgGrade();
-  printAvgGradeByGroup();
+  // print data on terminal
 
+  // printAllGrades();
+  // printAvgGradeOfEachTerm();
+  // printOverallAvgGrade();
+  // printAvgGradeByGroup();
+
+  // call function to write the file
   writeOutputToCSV();
   return 0;
 }
+ 
