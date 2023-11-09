@@ -26,9 +26,9 @@ struct Term
 struct Term terms[MAX_TERMS];
 int num_terms = 0;
 
-
 // Function to read grades from a CSV file
-void readGradesFromFile(const char *filename) {
+void readGradesFromFile(const char *filename)
+{
   FILE *file = fopen(filename, "r");
   if (file == NULL)
   {
@@ -199,7 +199,7 @@ void writeOutputToCSV()
       total_grade += terms[i].subjects[j].grade * terms[i].subjects[j].credit;
     }
     float avg_grade = total_grade / terms[i].total_credits;
-    fprintf(file, "%s,%.2f,%.2f\n", terms[i].name, terms[i].total_credits, avg_grade);
+    fprintf(file, "%s,%.1f,%.2f\n", terms[i].name, terms[i].total_credits, avg_grade);
   }
 
   // Calculate the overall average grade
@@ -217,7 +217,7 @@ void writeOutputToCSV()
   float overall_avg_grade = overall_total_grade / overall_total_credits;
   fprintf(file, ",%.2f\n", overall_avg_grade);
   // Write total credits
-  fprintf(file, "Total Credits,%.2f\n", overall_total_credits);
+  fprintf(file, "Total Credits,%.1f\n", overall_total_credits);
 
   // Calculate the average grade by subject groups
   char groups[MAX_SUBJECTS][3] = {0};
@@ -257,7 +257,7 @@ void writeOutputToCSV()
   for (int i = 0; i < num_groups; i++)
   {
     float avg_grade = group_total_grade[i] / group_total_credits[i];
-    fprintf(file, "%s,%.2f,%.2f\n", groups[i], group_total_credits[i], avg_grade);
+    fprintf(file, "%s,%.1f,%.2f\n", groups[i], group_total_credits[i], avg_grade);
   }
 
   // Close the output file
@@ -274,12 +274,11 @@ int main()
   // print data on terminal
 
   // printAllGrades();
-  // printAvgGradeOfEachTerm();
-  // printOverallAvgGrade();
-  // printAvgGradeByGroup();
-
+  /* printAvgGradeOfEachTerm();
+  printOverallAvgGrade();
+  printAvgGradeByGroup();
+  */
   // call function to write the file
   writeOutputToCSV();
   return 0;
 }
- 
