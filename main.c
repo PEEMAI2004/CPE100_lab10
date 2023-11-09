@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 #define MAX_SUBJECTS 100
 #define MAX_TERMS 10
@@ -83,6 +84,23 @@ void readGradesFromFile(const char *filename)
 
   fclose(file);
 }
+
+// Function to divide numbers and round to 2 decimal places (round up, round down, or standard) base on flag
+float divideAndRound(int flag,float dividend, float divisor)
+{
+  // flag = 0: round down, flag = 1: round up, flag = 2: standard
+  float result = dividend / divisor;
+  if (flag == 0)
+  {
+    result = floor(result * 100) / 100;
+  }
+  else if (flag == 1)
+  {
+    result = ceil(result * 100) / 100;
+  }
+  return result;
+}
+
 
 // Function to print all grades
 void printAllGrades()
@@ -178,7 +196,7 @@ void printAvgGradeByGroup()
 }
 
 // Function to write output to a CSV file
-void writeOutputToCSV()
+void writeOutputToCSV(int flag)
 {
   // Open the output file for writing
   FILE *file = fopen("output.csv", "w");
@@ -198,7 +216,7 @@ void writeOutputToCSV()
     {
       total_grade += terms[i].subjects[j].grade * terms[i].subjects[j].credit;
     }
-    float avg_grade = total_grade / terms[i].total_credits;
+    float avg_grade = divideAndRound(flag,total_grade, terms[i].total_credits);
     fprintf(file, "%s,%.1f,%.2f\n", terms[i].name, terms[i].total_credits, avg_grade);
   }
 
@@ -214,7 +232,7 @@ void writeOutputToCSV()
       overall_total_credits += terms[i].subjects[j].credit;
     }
   }
-  float overall_avg_grade = overall_total_grade / overall_total_credits;
+  float overall_avg_grade = divideAndRound(flag,overall_total_grade, overall_total_credits);
   fprintf(file, ",%.2f\n", overall_avg_grade);
   // Write total credits
   fprintf(file, "Total Credits,%.1f\n", overall_total_credits);
@@ -256,7 +274,7 @@ void writeOutputToCSV()
   fprintf(file, "Subject Group,Total Credits,avg grade\n"); // header
   for (int i = 0; i < num_groups; i++)
   {
-    float avg_grade = group_total_grade[i] / group_total_credits[i];
+    float avg_grade = divideAndRound(flag,group_total_grade[i], group_total_credits[i]);
     fprintf(file, "%s,%.1f,%.2f\n", groups[i], group_total_credits[i], avg_grade);
   }
 
@@ -279,6 +297,7 @@ int main()
   printAvgGradeByGroup();
   */
   // call function to write the file
-  writeOutputToCSV();
+  writeOutputToCSV(0);
+  // flag = 0: round down, flag = 1: round up, flag = 2: standard
   return 0;
 }

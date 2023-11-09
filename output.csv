@@ -2,10 +2,10 @@ Average Grade of Each Term:
 Term,Total Credits,avg grade
 Grade 10 Term 1,15.0,3.45
 Grade 10 Term 2,14.5,3.84
-Grade 11 Term 1,15.0,3.92
-Grade 11 Term 2,15.0,3.92
+Grade 11 Term 1,15.0,3.91
+Grade 11 Term 2,15.0,3.91
 Grade 12 Term 1,13.5,3.94
-Grade 12 Term 2,13.5,3.63
+Grade 12 Term 2,13.5,3.62
 
 Overall Average Grade:,3.78
 Total Credits,86.5
@@ -15,7 +15,7 @@ Subject Group,Total Credits,avg grade
 TH,6.0,3.33
 MA,18.0,3.72
 SC,27.5,3.78
-SO,10.0,3.83
+SO,10.0,3.82
 HP,3.0,4.00
 AR,3.0,4.00
 OT,3.0,3.33
